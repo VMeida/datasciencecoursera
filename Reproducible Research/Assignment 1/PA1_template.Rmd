@@ -1,3 +1,12 @@
+---
+title: "PA1_template"
+author: Victor Almeida
+date: April 22, 2018
+output:
+  md_document:
+    variant: markdown_github
+---
+
 Reproducible Research Assignment 1 - Activity Monitoring Data
 ========================================
  
