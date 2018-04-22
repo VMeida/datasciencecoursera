@@ -1,4 +1,3 @@
-# This scripts serves only to plot the figures. The exploratory and test pahses are in the Assignment.R 
 
 setwd('D:/Coursera/datasciencecoursera')
 
@@ -9,6 +8,9 @@ SCC <- readRDS("./Exploratory Data Analysis/Assignment_Week4/Data/Source_Classif
 # 2008? Using the base plotting system, make a plot showing the total PM2.5
 # emission from all sources for each of the years 1999, 2002, 2005, and 2008.
 
+plot <- tapply(NEI$Emissions, NEI$year, FUN=sum)
+plot
+
 png("./Exploratory Data Analysis/Assignment_Week4/plot1.png", width=480, height=480)
-with(NEI, boxplot(log10(Emissions) ~ year, na.rm=T, xlab='Year', ylab='Log10(Emissions)', main='PM2.5 Emissions in the US'))
+barplot(plot, na.rm=T, xlab='Year', ylab='Emissions', main='PM2.5 Emissions in the US')
 dev.off()

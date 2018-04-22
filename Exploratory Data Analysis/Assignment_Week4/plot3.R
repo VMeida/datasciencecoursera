@@ -1,4 +1,3 @@
-# This scripts serves only to plot the figures. The exploratory and test pahses are in the Assignment.R 
 
 setwd('D:/Coursera/datasciencecoursera')
 
@@ -16,5 +15,5 @@ BC25 <- subset(NEI, fips=='24510')
 library(ggplot2)
 
 png("./Exploratory Data Analysis/Assignment_Week4/plot3.png", width=1000, height=1000)
-qplot(type, log10(Emissions), data=BC25, geom=c("boxplot"), facets=type~year, color=type, na.rm=T, main='PM2.5 Emission on Baltimore City by Type')
+ggplot(data=BC25, aes(y=Emissions, x=year)) + geom_bar(stat = 'sum', aes(fill=year)) + facet_grid(~type) + ggtitle('PM25 Emmision in Baltimore per type')
 dev.off()

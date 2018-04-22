@@ -1,10 +1,10 @@
-# This scripts serves only to plot the figures. The exploratory and test pahses are in the Assignment.R 
 
 setwd('D:/Coursera/datasciencecoursera')
 
 NEI <- readRDS("./Exploratory Data Analysis/Assignment_Week4/Data/summarySCC_PM25.rds")
 SCC <- readRDS("./Exploratory Data Analysis/Assignment_Week4/Data/Source_Classification_Code.rds")
 
+library(ggplot2)
 #   Across the United States, how have emissions from coal combustion-related
 # sources changed from 1999-2008?
 
@@ -22,6 +22,6 @@ coal <- subset(both, grepl('[Cc]oal',both$SCC.Level.Three))
 unique(coal$SCC.Level.Three)
 
 
-png("./Exploratory Data Analysis/Assignment_Week4/plot4.png", width=1000, height=1000)
-ggplot(coal, aes(Pollutant, log10(Emissions))) + geom_boxplot(aes(colour=SCC.Level.Three)) + facet_grid(SCC.Level.Three~year) + ggtitle('Coal Emissions by Year in the US')
+png("./Exploratory Data Analysis/Assignment_Week4/plot4.png", width=2000, height=1000)
+ggplot(coal, aes(year, Emissions)) + geom_bar(stat = 'sum',aes(fill=year)) + facet_grid(~SCC.Level.Three) + ggtitle('Coal Emissions by Year in the US')
 dev.off()

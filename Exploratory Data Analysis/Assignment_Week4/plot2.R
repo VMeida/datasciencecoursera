@@ -1,4 +1,3 @@
-# This scripts serves only to plot the figures. The exploratory and test pahses are in the Assignment.R 
 
 setwd('D:/Coursera/datasciencecoursera')
 
@@ -10,7 +9,8 @@ SCC <- readRDS("./Exploratory Data Analysis/Assignment_Week4/Data/Source_Classif
 # a plot answering this question.
 
 BC25 <- subset(NEI, fips=='24510')
+plot <- tapply(BC25$Emissions, BC25$year, FUN=sum)
 
 png("./Exploratory Data Analysis/Assignment_Week4/plot2.png", width=480, height=480)
-with(BC25, boxplot(log10(Emissions) ~ year, na.rm=T, xlab='Year', ylab='Log10(Emissions)', main='PM2.5 Emissions in Baltimore'))
+barplot(plot, na.rm=T, xlab='Year', ylab='Emissions', main='PM2.5 Emissions in Baltimore')
 dev.off()
